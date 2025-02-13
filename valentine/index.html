@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Sweet Jennyfer</title>
+    <!-- Import Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Basic Reset and Layout */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(139, 0, 0, 0.5);
+      }
+      body {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url("./Pink Minimalist Valentines Day Story.png") no-repeat
+          center center;
+        background-size: contain;
+        background-attachment: fixed;
+        text-align: center;
+        font-family: "Roboto", sans-serif;
+        transition: background 0.5s ease-in-out;
+        user-select: none;
+      }
+      .container {
+        padding: 20px;
+        max-width: 90vw;
+        z-index: 2;
+      }
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+      }
+      p {
+        font-size: 1.1rem;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards 0.5s;
+      }
+      .cta,
+      .yes-btn {
+        margin-top: 20px;
+        padding: 14px 30px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.3s;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.1rem;
+      }
+      .cta {
+        background: rgba(185, 43, 43, 0.13);
+        color: white;
+      }
+      .cta:hover {
+        background: rgba(244, 181, 181, 0.271);
+        transform: scale(1.05);
+      }
+      .yes-btn {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        font-size: 1.2rem;
+        box-shadow: 0px 4px 15px rgba(255, 65, 108, 0.5);
+      }
+      .yes-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0px 6px 20px rgba(255, 65, 108, 0.7);
+      }
+      .hidden {
+        display: none;
+      }
+      .new-background {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Floating hearts (decorative) */
+      .floating-heart {
+        position: absolute;
+        width: 50px;
+        pointer-events: none;
+        animation: floatHeartGif 10s infinite;
+        z-index: 1;
+      }
+      .heart1 {
+        top: 20%;
+        left: 5%;
+      }
+      .heart2 {
+        bottom: 20%;
+        right: 5%;
+      }
+      @keyframes floatHeartGif {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        50% {
+          transform: translate(20px, 50vh) rotate(15deg);
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(0deg);
+          opacity: 0;
+        }
+      }
+      .floating-hearts-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .heart-emoji {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.8;
+        animation: floatUp 6s linear infinite;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translate(0, 100vh) scale(0.8);
+          opacity: 0;
+        }
+        20% {
+          transform: translate(10px, 80vh) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translate(-10px, 50vh) scale(1.1);
+          opacity: 1;
+        }
+        80% {
+          transform: translate(10px, 20vh) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(0, -10vh) scale(0.8);
+          opacity: 0;
+        }
+      }
+      /* Transition Overlay with Growing Heart */
+      #transitionOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        background: transparent;
+        display: none;
+      }
+      .single-heart {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        font-size: 10rem;
+        animation: growAndFade 2s forwards;
+        pointer-events: none;
+      }
+      @keyframes growAndFade {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(30);
+          opacity: 0;
+        }
+      }
+      /* Popup Modal for Journey */
+      #popupModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      }
+      #popupModal .modal-content {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        max-width: 90%;
+        position: relative;
+        animation: modalFadeIn 0.5s;
+      }
+      #popupModal .modal-content h2 {
+        margin-bottom: 20px;
+        font-family: "Montserrat", sans-serif;
+      }
+      #popupModal .journey-btn {
+        padding: 14px 30px;
+        border: none;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      #popupModal .journey-btn:hover {
+        transform: scale(1.05);
+      }
+      #popupModal .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #555;
+      }
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      /* JOURNEY MODE – Fullscreen “camera” moving along a path */
+      #journeyContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("./sky_starlight.jpg") no-repeat center center;
+        background-size: cover;
+        z-index: 11000;
+        display: none;
+        overflow: hidden;
+      }
+      /* The inner container holds the memory images and the path.
+       Increased width to allow more spacing between images. */
+      #pathContainer {
+        position: absolute;
+        width: 2500px;
+        height: 700px;
+      }
+      /* SVG path overlay inside the container */
+      #journeyPathSVG {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+      /* Memory images */
+      .memory-img {
+        position: absolute;
+        max-width: 200px;
+        border-radius: 10px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 1;
+        cursor: pointer;
+      }
+      /* Position the memory images with increased spacing */
+      #memory1 {
+        left: 150px;
+        top: 300px;
+      }
+      #memory2 {
+        left: 350px;
+        top: 250px;
+      }
+      #memory3 {
+        left: 600px;
+        top: 300px;
+      }
+      #memory4 {
+        left: 850px;
+        top: 350px;
+      }
+      #memory5 {
+        left: 1100px;
+        top: 300px;
+      }
+      #memory6 {
+        left: 1350px;
+        top: 250px;
+      }
+      #memory7 {
+        left: 1600px;
+        top: 300px;
+      }
+      #memory8 {
+        left: 1850px;
+        top: 350px;
+      }
+      #memory9 {
+        left: 2100px;
+        top: 300px;
+      }
+      #memory10 {
+        left: 2350px;
+        top: 250px;
+      }
+      /* Modern Navigation Buttons at Bottom */
+      .nav-btn {
+        position: fixed;
+        bottom: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        color: #333;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 12000;
+      }
+      #prevBtn {
+        left: 20px;
+      }
+      #nextBtn {
+        right: 20px;
+      }
+      /* Finish Journey Button (hidden by default) */
+      #finishBtn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 12000;
+        display: none;
+      }
+      /* Popup for Full-Size Image */
+      #imagePopup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 13000;
+      }
+      #imagePopup .popup-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+      #imagePopup .popup-content img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+      #imagePopup .close-popup {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+      }
+      /* Final Message Popup */
+      #finalMessagePopup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 14000;
+      }
+      #finalMessagePopup .popup-content {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 90vw;
+        text-align: center;
+        position: relative;
+      }
+      #finalMessagePopup .popup-content p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        font-family: "Montserrat", sans-serif;
+      }
+      #finalMessagePopup .close-final {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        font-size: 2rem;
+        color: #555;
+        cursor: pointer;
+      }
+      /* Mobile Optimization */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+        p,
+        .cta,
+        .yes-btn {
+          font-size: 0.9rem;
+          padding: 10px 20px;
+        }
+        .memory-img {
+          max-width: 150px;
+        }
+        #pathContainer {
+          width: 1800px;
+        }
+        .nav-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+          border-radius: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Transition Overlay -->
+    <div id="transitionOverlay"></div>
+
+    <!-- First Screen -->
+    <div id="screen1" class="container">
+      <h1>Welcome, My Love 💖</h1>
+      <p>Swipe up or tap to enter</p>
+      <button class="cta" onclick="startTransition(goToValentineScreen)">
+        Enter
+      </button>
+    </div>
+
+    <!-- Second Screen -->
+    <div id="screen2" class="container hidden" style="position: relative">
+      <div class="floating-hearts-bg">
+        <span class="heart-emoji" style="left: 10%; animation-delay: 0s"
+          >💖</span
+        >
+        <span class="heart-emoji" style="left: 40%; animation-delay: 1s"
+          >💖</span
+        >
+        <span class="heart-emoji" style="left: 70%; animation-delay: 2s"
+          >💖</span
+        >
+        <span
+          class="heart-emoji"
+          style="left: 25%; animation-delay: 3s; font-size: 1.5rem"
+          >💖</span
+        >
+        <span
+          class="heart-emoji"
+          style="left: 55%; animation-delay: 4s; font-size: 1.5rem"
+          >💖</span
+        >
+      </div>
+      <img
+        src="./a4099888f224e90f733c211b19f27d39.gif"
+        alt="Floating Heart"
+        class="floating-heart heart1"
+      />
+      <img
+        src="./a4099888f224e90f733c211b19f27d39.gif"
+        alt="Floating Heart"
+        class="floating-heart heart2"
+      />
+      <div class="valentine-box">
+        <h1>Alright, Babe.</h1>
+        <h1>Be my valentine, not for only today but always.</h1>
+        <p class="rizz-text">
+          Didn't add a no button cuz you know there's no alternative.
+        </p>
+        <p class="rizz-text">Lock it in—be my valentine today.</p>
+        <img src="./patapata.gif" alt="Meme" class="meme-img" />
+        <button class="yes-btn" onclick="nextStep()">YES, I Got You</button>
+      </div>
+    </div>
+
+    <!-- Popup Modal for Journey -->
+    <div id="popupModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Let's go back and visit some old memories</h2>
+        <button class="journey-btn" onclick="beginJourney()">
+          Begin Journey
+        </button>
+      </div>
+    </div>
+
+    <!-- Journey Mode Container -->
+    <div id="journeyContainer">
+      <!-- Modern Navigation Buttons at Bottom -->
+      <button id="prevBtn" class="nav-btn">‹</button>
+      <button id="nextBtn" class="nav-btn">›</button>
+      <!-- Finish Journey Button (hidden by default) -->
+      <button id="finishBtn">Finish Journey</button>
+      <!-- The path container holds both the SVG path and the memory images -->
+      <div id="pathContainer">
+        <!-- SVG showing the journey path -->
+        <svg id="journeyPathSVG" width="2500" height="700">
+          <path
+            d="M150,300 L350,250 L600,300 L850,350 L1100,300 L1350,250 L1600,300 L1850,350 L2100,300 L2350,250"
+            stroke="#ff416c"
+            stroke-width="4"
+            fill="none"
+          />
+        </svg>
+        <!-- Memory images with your provided WhatsApp image paths -->
+        <img
+          id="memory1"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.00_58a81df8.jpg"
+          alt="Memory 1"
+        />
+        <img
+          id="memory2"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.02_99100778.jpg"
+          alt="Memory 2"
+        />
+        <img
+          id="memory3"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.03_c60cb95c.jpg"
+          alt="Memory 3"
+        />
+        <img
+          id="memory4"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.12_c6f5dc0a.jpg"
+          alt="Memory 4"
+        />
+        <img
+          id="memory5"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.23_b583e347.jpg"
+          alt="Memory 5"
+        />
+        <img
+          id="memory6"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.29_7079b617.jpg"
+          alt="Memory 6"
+        />
+        <img
+          id="memory7"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.30_1148e2ee.jpg"
+          alt="Memory 7"
+        />
+        <img
+          id="memory8"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.30_99051336.jpg"
+          alt="Memory 8"
+        />
+        <img
+          id="memory9"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.31_d30145f0.jpg"
+          alt="Memory 9"
+        />
+        <img
+          id="memory10"
+          class="memory-img"
+          src="./WhatsApp Image 2025-02-14 at 02.54.32_f043bd04.jpg"
+          alt="Memory 10"
+        />
+      </div>
+    </div>
+
+    <!-- Popup for Full-Size Image -->
+    <div id="imagePopup" class="hidden">
+      <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <img id="popupImage" src="" alt="Full Size Image" />
+      </div>
+    </div>
+
+    <!-- Popup for Final Message -->
+    <div id="finalMessagePopup" class="hidden">
+      <div class="popup-content">
+        <span class="close-final">&times;</span>
+        <p class="final-message">
+          Jenny, these memories mean the world to me. I truly appreciate every
+          moment we've shared together. I love you, and I’m looking forward to
+          all the good times ahead.
+        </p>
+      </div>
+    </div>
+
+    <!-- Background Audio -->
+    <audio id="bgMusic" src="./Blue-Yung-Kai.mp3" preload="auto" loop></audio>
+
+    <script>
+      // GLOBAL VARIABLE to track the current image index
+      let currentIndex = 0;
+      // Predefined positions for the 10 images (matching the SVG path and inline styles)
+      const imagePositions = [
+        { x: 150, y: 300 },
+        { x: 350, y: 250 },
+        { x: 600, y: 300 },
+        { x: 850, y: 350 },
+        { x: 1100, y: 300 },
+        { x: 1350, y: 250 },
+        { x: 1600, y: 300 },
+        { x: 1850, y: 350 },
+        { x: 2100, y: 300 },
+        { x: 2350, y: 250 },
+      ];
+
+      // Cache finishBtn
+      const finishBtn = document.getElementById("finishBtn");
+
+      // Transition overlay: growing heart effect
+      function startTransition(callback) {
+        const overlay = document.getElementById("transitionOverlay");
+        overlay.innerHTML = "";
+        const heart = document.createElement("span");
+        heart.className = "single-heart";
+        heart.textContent = "💖";
+        overlay.appendChild(heart);
+        overlay.style.display = "block";
+        setTimeout(() => {
+          callback();
+        }, 2000);
+        setTimeout(() => {
+          overlay.style.display = "none";
+          overlay.innerHTML = "";
+        }, 2500);
+      }
+
+      function goToValentineScreen() {
+        document.getElementById("screen1").classList.add("hidden");
+        document.getElementById("screen2").classList.remove("hidden");
+        document.body.classList.add("new-background");
+      }
+
+      // Show the popup modal for starting the journey
+      function nextStep() {
+        document.getElementById("popupModal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("popupModal").style.display = "none";
+      }
+
+      // Begin Journey: display the journey container and start background audio
+      function beginJourney() {
+        closeModal();
+        document.getElementById("journeyContainer").style.display = "block";
+        // Center on the first image
+        centerOnImage(imagePositions[currentIndex]);
+        // Start background music (triggered by user gesture)
+        const audio = document.getElementById("bgMusic");
+        if (audio) {
+          audio.play().catch((e) => console.log("Audio playback error:", e));
+        }
+        // Hide finish button initially
+        finishBtn.style.display = "none";
+      }
+
+      // Center the pathContainer so that the image at 'pos' is centered in the viewport.
+      function centerOnImage(pos) {
+        const container = document.getElementById("pathContainer");
+        const viewportX = window.innerWidth / 2;
+        const viewportY = window.innerHeight / 2;
+        const translateX = viewportX - pos.x;
+        const translateY = viewportY - pos.y;
+        container.style.transition = "transform 0.5s ease-in-out";
+        container.style.transform = `translate(${translateX}px, ${translateY}px)`;
+      }
+
+      // Navigation functions for Prev/Next buttons
+      function showPrev() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          centerOnImage(imagePositions[currentIndex]);
+          finishBtn.style.display = "none";
+        }
+      }
+
+      function showNext() {
+        if (currentIndex < imagePositions.length - 1) {
+          currentIndex++;
+          centerOnImage(imagePositions[currentIndex]);
+          // If last node reached, show finish button
+          if (currentIndex === imagePositions.length - 1) {
+            finishBtn.style.display = "block";
+          } else {
+            finishBtn.style.display = "none";
+          }
+        }
+      }
+
+      // Attach event listeners to navigation buttons
+      document.getElementById("prevBtn").addEventListener("click", showPrev);
+      document.getElementById("nextBtn").addEventListener("click", showNext);
+
+      // Instead of press-and-hold zoom, add a click event to open a popup with full-size image.
+      const memoryImages = document.querySelectorAll(".memory-img");
+      memoryImages.forEach((img) => {
+        img.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openImagePopup(img.src);
+        });
+      });
+
+      // Function to open the full-size image popup
+      function openImagePopup(src) {
+        const popup = document.getElementById("imagePopup");
+        const popupImg = document.getElementById("popupImage");
+        popupImg.src = src;
+        popup.classList.remove("hidden");
+        popup.style.display = "flex";
+      }
+
+      // Function to close the image popup
+      function closeImagePopup() {
+        const popup = document.getElementById("imagePopup");
+        popup.style.display = "none";
+        popup.classList.add("hidden");
+      }
+
+      // Close image popup when clicking the close button or clicking outside the image
+      document
+        .querySelector("#imagePopup .close-popup")
+        .addEventListener("click", closeImagePopup);
+      document
+        .getElementById("imagePopup")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeImagePopup();
+          }
+        });
+
+      // Show Final Message Popup when Finish Journey is clicked
+      document.getElementById("finishBtn").addEventListener("click", () => {
+        const finalPopup = document.getElementById("finalMessagePopup");
+        finalPopup.classList.remove("hidden");
+        finalPopup.style.display = "flex";
+      });
+
+      // Close Final Message Popup when clicking close or outside the content
+      document
+        .querySelector("#finalMessagePopup .close-final")
+        .addEventListener("click", closeFinalPopup);
+      document
+        .getElementById("finalMessagePopup")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeFinalPopup();
+          }
+        });
+
+      function closeFinalPopup() {
+        const finalPopup = document.getElementById("finalMessagePopup");
+        finalPopup.style.display = "none";
+        finalPopup.classList.add("hidden");
+      }
+
+      // Optional: allow a touchstart on the first screen to trigger the transition
+      document.body.addEventListener(
+        "touchstart",
+        function () {
+          if (
+            !document.getElementById("screen1").classList.contains("hidden")
+          ) {
+            startTransition(goToValentineScreen);
+          }
+        },
+        { passive: true }
+      );
+    </script>
+  </body>
+</html>

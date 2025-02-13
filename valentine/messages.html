@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story</title>
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #d6336c;
+      margin: 0 0.5rem;
+      font-weight: bold;
+    }
+    h1 {
+      color: #d6336c;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    section {
+      margin: 2rem 0;
+      border-bottom: 1px solid #d6336c;
+      padding-bottom: 1rem;
+    }
+    section:last-child {
+      border: none;
+    }
+    .hidden-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s;
+      margin-top: 1rem;
+      color: #555;
+    }
+    button {
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #b32759;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="messages.html">Messages</a>
+      <a href="secret.html">Secret</a>
+    </nav>
+    <h1>Our Story</h1>
+    
+    <section>
+      <h2>How We Met</h2>
+      <p>We connected online in Zepeto, with playful banter and witty pickup lines.</p>
+      <button onclick="toggleContent('content1')">Reveal More</button>
+      <div id="content1" class="hidden-content">
+        <p>That initial spark turned into endless conversations that brightened our days.</p>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Deep Conversations</h2>
+      <p>Long calls where we shared secrets, dreams, and vulnerabilities.</p>
+      <button onclick="toggleContent('content2')">Reveal More</button>
+      <div id="content2" class="hidden-content">
+        <p>Your voice became my favorite sound, and every conversation meant the world to me.</p>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Promises & Dreams</h2>
+      <p>Through challenges and doubts, we promised to cherish every moment and dream big.</p>
+      <button onclick="toggleContent('content3')">Reveal More</button>
+      <div id="content3" class="hidden-content">
+        <p>Our dream of visiting Japan symbolizes the adventures that await us.</p>
+      </div>
+    </section>
+    
+    <div>
+      <button onclick="window.location.href='secret.html'">Final Surprise</button>
+    </div>
+  </div>
+  <script>
+    function toggleContent(id) {
+      var content = document.getElementById(id);
+      if (content.style.display === 'block') {
+        content.style.opacity = 0;
+        setTimeout(() => { content.style.display = 'none'; }, 500);
+      } else {
+        content.style.display = 'block';
+        setTimeout(() => { content.style.opacity = 1; }, 100);
+      }
+    }
+  </script>
+</body>
+</html>
